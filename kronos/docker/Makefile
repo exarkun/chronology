@@ -13,7 +13,7 @@ build:
 build_nocache:
 	cd $(KRONOS_VERSION) && sudo docker build --no-cache -t chronology/kronos:$(KRONOS_VERSION) .
 run:
-	sudo docker run -d -p 8550:8150 -p 8551:8151 -p 8552:8152 -v /etc/kronos/settings.py:/etc/kronos/settings.py -v /var/log/kronos:/var/log/kronos chronology/kronos:$(KRONOS_VERSION)
+	sudo docker run -d -p 8550:8150 -v /etc/kronos:/etc/kronos -v /var/log/kronos:/var/log/kronos chronology/kronos:$(KRONOS_VERSION)
 run-terminal:
 	sudo docker run -t -i chronology/kronos:$(KRONOS_VERSION) /bin/bash
 push:

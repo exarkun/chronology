@@ -55,11 +55,7 @@ def make_dirs():
 
 def copy_files():
   print 'Copying configuration and init.d script files...'
-
-  uwsgi_file_path = os.path.join(BASE_DIR, 'scripts/uwsgi.ini')
   kronosd_file_path = os.path.join(BASE_DIR, 'scripts/kronosd.init.d')
-
-  shutil.copy(uwsgi_file_path, '/etc/kronos')
   shutil.copy(kronosd_file_path, '/etc/init.d/kronosd')
   print 'done.'
 
