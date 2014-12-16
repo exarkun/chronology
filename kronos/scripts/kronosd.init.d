@@ -28,7 +28,7 @@ case "$1" in
   fi
 
 	echo -n "Starting kronosd: "
-	if (cd $LIBDIR/uwsgi && ./uwsgi --ini /etc/kronos/uwsgi.ini --pidfile $PIDFILE --daemonize $LOGFILE)
+	if (cd $LIBDIR/uwsgi && ./uwsgi --pidfile $PIDFILE --daemonize $LOGFILE)
 	then
 		echo "ok"
 	else

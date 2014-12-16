@@ -17,6 +17,7 @@ RUN_DIR = '/var/run/kronos'
 TMP_DIR = tempfile.gettempdir()
 UWSGI_VERSION = '2.0.5.1'
 
+
 def run_cmd(cmd):
   print '> %s' % cmd
   assert os.system(cmd) == 0
@@ -55,8 +56,19 @@ def make_dirs():
 
 def copy_files():
   print 'Copying configuration and init.d script files...'
+  shutil.copy(os.path.join(BASE_DIR, 'scripts/uwsgi.ini'),
+              '/etc/uwsgi/apps-available/kronos.ini')
+  os.symlink('/etc/uwsgi/apps-available/kronos.ini',
+             '/etc/uwsgi/apps-enabled/kronos.ini')
   kronosd_file_path = os.path.join(BASE_DIR, 'scripts/kronosd.init.d')
   shutil.copy(kronosd_file_path, '/etc/init.d/kronosd')
+  with open(os.path.join(BASE_DIR, 'settings.py.template')) as f:
+    settings = f.read()
+  if not LOG_DIR_RE.search(settings):
+    raise Exception('Failed to find log directory in settings.py.template.')
+  settings = re.sub(LOG_DIR_RE, "'log_directory': '%s'" % LOG_DIR, settings)
+  with open('/etc/kronos/settings.py', 'w') as f:
+    f.write(settings)
   print 'done.'
 
 

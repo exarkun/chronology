@@ -7,7 +7,7 @@ We've already pushed a working [Dockerfile to Docker Hub](https://registry.hub.d
   * Put a `settings.py` in `/etc/kronos/settings.py`
   * Copy `kronos/scripts/uwsgi.ini` to `/etc/kronos/`
   * Create `/var/log/kronos` for log output
-  * Run `sudo docker run -d -p 8550:8150 -v /etc/kronos:/etc/kronos -v /var/log/kronos:/var/log/kronos chronology/kronos:$(KRONOS_VERSION)`
+  * Run `sudo docker run -d -p 8150:8150 -v /etc/kronos:/etc/kronos -v /var/log/kronos:/var/log/kronos chronology/kronos:$(KRONOS_VERSION)`
 
 ## How to create new Dockerfiles for future versions of Kronos
 
