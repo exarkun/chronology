@@ -28,10 +28,10 @@ SCHEDULER_FAILURE_EMAILS = [
   'other@yourcompany.com',
 ]
 
-# Kronos and metis pointers
-KRONOS_URL = 'http://localhost:8150'
-KRONOS_NAMESPACE = 'kronos'
+# Metis settings
 METIS_URL = 'http://localhost:8151'
+DATA_SOURCE_NAME = 'kronos'
+DATA_SOURCE_TYPE = 'kronos'
 
 # This database persists all dashboards and settings
 SQLALCHEMY_DATABASE_URI = 'sqlite:///%s/app.db' % APPROOT
