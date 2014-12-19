@@ -6,8 +6,8 @@ from flask import current_app
 from metis.core.query.aggregate import GroupBy
 from metis.core.query.condition import Condition
 from metis.core.query.kronos.source import KronosSource
-from metis.core.query.transform import Project, Filter, Aggregate, OrderBy
-from metis.core.query.transform import Limit
+from metis.core.query.operator import Project, Filter, Aggregate, OrderBy
+from metis.core.query.operator import Limit
 from metis.core.query.value import Constant
 from metis.core.query.value import Property
 
